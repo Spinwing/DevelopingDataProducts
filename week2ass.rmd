@@ -1,0 +1,21 @@
+---
+title: "Coursera Developing Data Products Week 2 Assignment"
+author: "Stefano Vedovelli"
+date: "2 November 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## UNESCO World Heritage Monuments in Italy
+As part of the Coursera Developing Data Products, students have to publish a web page featuring a leaflet map. Why not show something cultural? Being Italian, I know that my country hosts quite a few monuments declared UNESCO World Heritage.
+
+Enjoy an updated list, maybe one day, you will come to Italy and visit them. In the meantime, I'm checking the list to see which ones I've not visited yet ;)
+
+```{r map, echo=FALSE, warning=FALSE, message=FALSE}
+library(leaflet)
+whc_sites_2017 <- read.csv("whc-sites-2017.csv") 
+whc_sites_2017 %>% leaflet() %>% addTiles() %>% addMarkers(popup = whc_sites_2017$name_en)
+```
