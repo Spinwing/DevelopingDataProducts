@@ -10,6 +10,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(DT)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -18,7 +19,7 @@ shinyServer(function(input, output) {
     read.csv("StockIndexCorrelation.csv")
   })
 
-  output$tblOutput <- renderTable({
+  output$tblOutput <- DT::renderDataTable({
     filter(stockData(), IDX>=input$period[1], IDX<=input$period[2])
   })
 

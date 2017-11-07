@@ -33,7 +33,7 @@ shinyUI(fluidPage(
         tabPanel("Plot", plotOutput("plot"),
                  verbatimTextOutput("correlation", placeholder = TRUE)
         ),
-        tabPanel("Table", tableOutput("tblOutput")),
+        tabPanel("Table", DT::dataTableOutput("tblOutput")),
         tabPanel("Help", helpText("Drag the slider 'Period to observe' to define the period of your interest.\nSelect the appropriate index for comparison against the DJI from the list of proposed indexes."))
       )
     )
