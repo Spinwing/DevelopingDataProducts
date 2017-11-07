@@ -18,6 +18,7 @@ The application shows, for the decade 2007-2017, the correlation between the Dow
 * Japan Nikkei (N225)
 
 You can run the application [here](https://spinwing.shinyapps.io/StockIndexCorrelation/)
+Code can be found [on GitHub](https://github.com/Spinwing/DevelopingDataProducts/tree/master)
 
 The data has been extracted from Yahoo Finance using the _quantmod_ library and normalized to show the returns from the start of the period.
 
@@ -53,7 +54,7 @@ plot_ly(data, x = ~Date, y = ~DJI, name = 'DJI', type = 'scatter', mode = 'lines
 ```
 
 
-## The Application (1/2)
+## The Application
 
 The application allows the user to specify the input parameters
 
@@ -61,14 +62,21 @@ On the left panel the user can specify the period interval and the index.
 
   * The Interval can be selected by dragging the two cursors
   * The index can be selected by picking the Index of choice.
-![The Left panel](pic1.png)
-
-## The Application (2/3)
 
 On the right panel the user can choose between two tabs:
 
 * The Plot tab shows the chart for the given indexes-period
 * The Table tab shows the data from the dataset for the selected period.
    
-![](pic4.png)
+## Results
 
+```{r results,message=FALSE, warning=FALSE}
+library(knitr)
+kable(cor(data[-1]))
+```
+
+* Market seem to be vaguely correlated
+* Correlation is higher depending on geographic regions
+* Narrower periods tend to show lower correlation
+
+Further study should be conducted to include more parameters to verify a larger correlation.
